@@ -9,7 +9,8 @@ fn main() {
 }
 
 fn compute(input: &str) -> i32 {
-    input.lines()
+    input
+        .lines()
         .map(|line| line.chars().filter(|c| c.is_numeric()).collect())
         .map(|line: String| (line.chars().next().unwrap(), line.chars().last().unwrap()))
         .map(|(first, last)| {
@@ -23,7 +24,8 @@ fn compute(input: &str) -> i32 {
 
 fn replace(input: &str) -> String {
     // very dirty hack
-    input.replace("one", "one1one")
+    input
+        .replace("one", "one1one")
         .replace("two", "two2two")
         .replace("three", "three3three")
         .replace("four", "four4four")
