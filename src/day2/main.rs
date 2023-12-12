@@ -22,30 +22,6 @@ fn main() {
         }).collect::<Vec<(i32, Vec<Pull>)>>();
 
     let a: i32 = pulls.iter()
-        /*.map(|(game, pulls)| {
-            (
-                game,
-                pulls.iter().fold(
-                    Pull {
-                        red: 0,
-                        green: 0,
-                        blue: 0,
-                    },
-                    |acc, pull| Pull {
-                        red: acc.red + pull.red,
-                        green: acc.green + pull.green,
-                        blue: acc.blue + pull.blue,
-                    },
-                ),
-            )
-        })
-        .filter(|(game, total_pulls)| {
-            let possible = total_pulls.red <= 12 && total_pulls.green <= 13 && total_pulls.blue <= 14;
-
-            println!("game {game} is possible: {possible} (r: {}/g: {}/b: {})", total_pulls.red, total_pulls.green, total_pulls.blue);
-
-            possible
-        })*/
         .filter(|(game, pulls)| pulls.iter().all(|pull| pull.valid()))
         .map(|(game, _)| game)
         .sum();
